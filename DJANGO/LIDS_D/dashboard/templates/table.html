@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+       
+    <!--This is the style sheets links to run the table with multisorts and firltering-->
+    <link rel= "stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
+    <link rel= "stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.22.1/dist/bootstrap-table.min.css" >
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <title>Document</title>
+
+</head>
+
+<body style="background-color: #a86c24;">
+    <div class="container-fluid">
+
+    <table   id="table"
+    data-search="true"
+    data-show-multi-sort-button="true"
+    data-multi-sort-strict-sort="true"
+    data-show-columns="true"
+    data-pagination="true"
+    data-show-multi-sort="true"
+    data-show-pagination-switch="true"
+    data-show-toggle="true"
+    data-sort-priority='[{"sortName": "office","sortOrder":"desc"},{"sortName":"position","sortOrder":"desc"}]'>
+
+        <thead class="table-secondary">
+            <tr>
+                <th data-field="time" data-sortable="true">Alert ID</th>
+                <th data-field="time" data-sortable="true">Severity</th>
+                <th data-field="pLength" data-sortable="true">Time</th> 
+                <th data-field="dstIp" data-sortable="true">Ip Src</th>
+                <th data-field="srcIP" data-sortable="true">Port Src</th>
+                <th data-field="dstPort" data-sortable="true">IP Dst</th>
+                <th data-field="srcPort" data-sortable="true">Port Dst</th>
+                <th data-field="protocol" data-sortable="true">Length</th>
+                <th data-field="severity" data-sortable="true">Protocol</th>
+                <th data-field="reason" data-sortable="true">Description</th>
+                <th data-field="info" data-sortable="true">info</th>
+                <th data-field="filename" data-sortable="true">filename</th>
+                <th data-field="filename" data-sortable="true">User Id</th>
+            </tr>
+        </thead>
+        <tbody>
+            {%for alert in alerts %}
+            <tr class="table-dark">
+                <td>{{alert.alert_id}}</td>
+                <td>{{alert.severity_level}}</td>
+                <td>{{alert.time}}</td>
+                <td>{{alert.ip_src}}</td>
+                <td>{{alert.port_src}}</td>
+                <td>{{alert.ip_dst}}</td>
+                <td>{{alert.port_dst}}</td>
+                <td>{{alert.length}}</td>
+                <td>{{alert.protocol}}</td>
+                <td>{{alert.descripton}}</td>
+                <td>{{alert.info}}</td>
+                <td>{{alert.filename}}</td>
+                <td>{{alert.user_id}}</td>
+
+            </tr>
+            {% endfor %}
+
+
+        </tbody>
+
+    </table>
+    </div>
+    <div id="exports">
+    <form method="get" action="{% url 'alert-detail' %}">
+        <div class="form-group">
+            <input id="type" name="type" value="json"/>
+            <button style="position: absolute; font-size: 20px; margin-top: 30px; margin-left: 84%;">Export as JSON</button>
+        </div>
+    </form>
+    <form method="get" action="{% url 'alert-detail' %}">
+        <div class="form-group">
+            <input id="type" name="type" value="csv"/>
+            <button style="position: absolute; font-size: 20px; margin-top: 30px; margin-left: 84%;">Export as CSV</button>
+        </div>
+    </form>
+    <form method="get" action="{% url 'alert-detail' %}">
+        <div class="form-group">
+            <input id="type" name="type" value="xml"/>
+            <button style="position: absolute; font-size: 20px; margin-top: 30px; margin-left: 84%;">Export as XML</button>
+        </div>
+    </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+    <script src="https://unpkg.com/bootstrap-table@1.22.1/dist/bootstrap-table.min.js"></script>
+    <script src="https://unpkg.com/bootstrap-table@1.22.1/dist/extensions/multiple-sort/bootstrap-table-multiple-sort.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    <script>
+        $(function() {
+            
+          $('#table').bootstrapTable()
+        })
+    </script>
+</body>
+
+</html>

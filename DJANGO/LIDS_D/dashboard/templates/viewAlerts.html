@@ -1,0 +1,223 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html>
+<title>Configuration page</title>
+
+<head> 
+    <link rel="stylesheet" href="{% static 'LIDS-D.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+     <!--This is the style sheets links to run the table with multisorts and firltering-->
+    <link rel= "stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
+    <link rel= "stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.22.1/dist/bootstrap-table.min.css" >
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+   
+
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.18.3/dist/bootstrap-table.min.css">
+    <style>
+        h1{
+            z-index: 1;
+            position: relative;
+            color: white;
+        }
+    </style>
+</head>
+
+
+
+<body style="background-color: #a86c24;">
+    
+
+    <!--Menu in the right side to jump to other pages in LIDS-D-->
+    <div id="menu">
+
+        <div class="boxes"><a href="NetworkInfo.html" style="color:white;">Network Information </a>
+            <div class="icon1">
+                <i class="bi bi-diagram-3-fill"></i>
+            </div>    
+        </div>
+
+        <div class="boxes"><a href="configServer.html" style="color:white;">Configuration</a>
+            <div class= "icon2">
+                <i class="bi bi-gear"></i>
+            </div>
+        </div>
+
+        <div class="boxes"><a href="viewAlerts.html" style="color:white;">View Alerts</a>
+            <div class="icon3">
+                <i class="bi bi-exclamation-triangle-fill"></i>
+            </div>
+        </div>
+        
+        <div class="boxes">
+            <div class ="message">
+            Remaining Storage:
+            <br>
+            <br>
+                
+                <p>{{free_space}} GB</p>
+                
+            </div>
+        </div>
+    </div>
+
+<!-- Big box containing the frame where all the information is displayed  -->
+    <div id="dashboard">
+        <h1 style="position: absolute;">VIEW ALERTS</h1>
+
+        <!--Table that contains the alerts, this will grow in real time-->
+        <table   id="table"
+        data-auto-refresh="true"
+        data-show-refresh="true"
+        data-show-auto-refresh="true"
+        data-auto-refresh-interval="3"
+        data-search="true"
+        data-show-multi-sort-button="true"
+        data-multi-sort-strict-sort="true"
+        data-show-columns="true"
+        data-pagination="true"
+        data-show-multi-sort="true"
+        data-show-pagination-switch="true"
+        data-show-toggle="true"
+        data-sort-priority='[{"sortName": "office","sortOrder":"desc"},{"sortName":"position","sortOrder":"desc"}]'>
+
+            <thead class="table-secondary">
+                <tr>
+                    <th data-field="alert_id" data-sortable="true">Alert ID</th>
+                    <th data-field="severity" data-sortable="true">Severity</th>
+                    <th data-field="time" data-sortable="true">Time</th>
+                    <th data-field="dstIp" data-sortable="true">Ip Src</th>
+                    <th data-field="srcIP" data-sortable="true">Port Src</th>
+                    <th data-field="dstPort" data-sortable="true">IP Dst</th>
+                    <th data-field="srcPort" data-sortable="true">Port Dst</th>
+                    <th data-field="pLength" data-sortable="true">Length</th>
+                    <th data-field="protocol" data-sortable="true">Protocol</th>
+                    <th data-field="reason" data-sortable="true">Description</th>
+                    <th data-field="info" data-sortable="true">info</th>
+                    <th data-field="filename" data-sortable="true">filename</th>
+                    <th data-field="user_id" data-sortable="true">User Id</th>
+                </tr>
+            </thead>
+            <tbody id='tableBody'>
+                {%for alert in alerts %}
+                <tr class="table-dark">
+                    <td>{{alert.alert_id}}</td>
+                    
+                    <!--Changing colors based on severity level-->
+                    <td {% if alert.severity_level == "3"%} style="background-color: #CC0000"
+                    {%elif alert.severity_level == '2'%} style="background-color: #FFD700"
+                    {%elif alert.severity_level == "1"%} style="background-color: green;"
+                    {% endif%}>{{alert.severity_level}}</td>
+                    
+                    <td>{{alert.time}}</td>
+                    <td>{{alert.ip_src}}</td>
+                    <td>{{alert.port_src}}</td>
+                    <td>{{alert.ip_dst}}</td>
+                    <td>{{alert.port_dst}}</td>
+                    <td>{{alert.length}}</td>
+                    <td>{{alert.protocol}}</td>
+                    <td>{{alert.descripton}}</td>
+                    <td>{{alert.info}}</td>
+                    <td>{{alert.filename}}</td>
+                    <td>{{alert.user_id}}</td>
+
+                </tr>
+                {% endfor %}
+                
+            </tbody>
+
+        </table>
+
+        <!--Button connected to the refresh table method-->
+        <button type="button" style="border-radius: 3px; font-size: 20px;" onClick="refreshTable()">Refresh</button>
+        
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+    <script src="https://unpkg.com/bootstrap-table@1.22.1/dist/bootstrap-table.min.js"></script>
+    <script src="https://unpkg.com/bootstrap-table@1.22.1/dist/extensions/multiple-sort/bootstrap-table-multiple-sort.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    
+
+    <!--Scripts needed for refresh options-->
+    <script src="https://unpkg.com/bootstrap-table@1.22.1/dist/extensions/auto-refresh/bootstrap-table-auto-refresh.js"></script>
+    
+    <script>
+        
+        $(function() {
+            
+             $('#table').bootstrapTable()
+        })
+        
+        $(function (){
+
+            var $table = $('#table');
+
+            //Hiding non-relevant columns at startup
+
+            $table.bootstrapTable('hideColumn', 'user_id');
+            $table.bootstrapTable('hideColumn', 'filename');
+            $table.bootstrapTable('hideColumn', 'info');
+            $table.bootstrapTable('hideColumn', 'protocol');
+            $table.bootstrapTable('hideColumn', 'pLength');
+            $table.bootstrapTable('hideColumn', 'srcPort');
+            $table.bootstrapTable('hideColumn', 'srcIP');
+            
+            //Initial sorting by time
+            $table.bootstrapTable('sortBy', {field: 'time', sortOrder: 'desc'});
+
+            
+            })
+
+        //I believe this function has to be modified so we can fetch and pass new alerts when it 'refreshes'
+        //SELECT A DIFFERENT PAGE TO SEE EFFECT 
+        function refreshTable(){
+
+            $('#table').bootstrapTable('destroy'); //destroy old table
+            $('#table').bootstrapTable(); //Rebuild the table
+            
+            var $table = $('#table');
+
+
+            //Hiding non-relevant columns at startup
+            $table.bootstrapTable('hideColumn', 'user_id');
+            $table.bootstrapTable('hideColumn', 'filename');
+            $table.bootstrapTable('hideColumn', 'info');
+            $table.bootstrapTable('hideColumn', 'protocol');
+            $table.bootstrapTable('hideColumn', 'pLength');
+            $table.bootstrapTable('hideColumn', 'srcPort');
+            $table.bootstrapTable('hideColumn', 'srcIP');
+            
+            $table.bootstrapTable('sortBy', {field: 'time', sortOrder: 'desc'});
+
+        }
+
+    </script>
+
+    <div id="exports">
+        <form method="get" action="{% url 'alert-detail' %}">
+            <div class="form-group">
+                <input id="type" name="type" value="json"/>
+                <button style="position: absolute; font-size: 20px; margin-top: -80px; margin-left: 70%;">Export as JSON</button>
+            </div>
+        </form>
+        <form method="get" action="{% url 'alert-detail' %}">
+            <div class="form-group">
+                <input id="type" name="type" value="csv"/>
+                <button style="position: absolute; font-size: 20px; margin-top: -120px; margin-left:70%;">Export as CSV</button>
+            </div>
+        </form>
+        <form method="get" action="{% url 'alert-detail' %}">
+            <div class="form-group">
+                <input id="type" name="type" value="xml"/>
+                <button style="position: absolute; font-size: 20px; margin-top: -160px; margin-left: 70%;">Export as XML</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,73 @@
+{% load static %}
+<!DOCTYPE html>
+<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+<html lang="en">
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="description" content = "width=device-width, initial-scale=1, shrink-to-fit=no"/>
+        
+        <title>{% block title %}LIDS{% endblock %}</title>
+        <!--Refernce css--> 
+        <link rel="stylesheet" type="text/css" href="{% static 'css/bootstyle.css' %}">
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
+      
+    <!------------------------------------Bootstrap---------------------------------------------->
+
+        <style>
+            .background {
+              background-color: #a86c24; 
+              color: #000000;
+                
+            }
+            .textFormat {
+              color: #000000;
+              font-size: 70px;
+              font-family: "Roboto", sans-serif !important;
+            }
+            .textFormat2 {
+              color: #000000;
+              font-size: 100px;
+              font-family: "Roboto", sans-serif !important;
+            }
+            .textFormat3 {
+              color: #000000;
+              font-size: 30px;
+              font-family: "Roboto", sans-serif !important;
+            }
+            .bottonText {
+              color: #080808;
+              margin-top: 50px;
+              font-size: 25px;
+              font-family: "Roboto", sans-serif !important;
+            }
+            .uploadBotton1 {
+                background-color: #878787; 
+              color: #080808;
+              margin-top: 20px;
+
+              font-size: 20px;
+              border: 2px solid #000000;
+              font-family: "Roboto", sans-serif !important;
+            }
+            .bottonText2 {
+              color: #000000;
+              background-color: #878787; 
+              border: 1px solid #000000;
+              margin-top: 20px;
+              font-size: 25px;
+              font-family: "Roboto", sans-serif !important;
+            }
+
+            </style>
+    </head>
+    <!------------------------------------Page---------------------------------------------->
+    <body class="container background">
+
+        <div class="jumbotron text-center textFormat">
+            Welcome To
+            <h1 class="container textFormat2">LIDS</h1> 
+        </div>
+        {% block content %}{% endblock %}
+    </body>
+</html>

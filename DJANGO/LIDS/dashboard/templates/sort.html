@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel= "stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
+    <link rel= "stylesheet" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.22.1/dist/bootstrap-table.min.css" >
+
+    <title>Document</title>
+
+</head>
+
+<body>
+    <table   id="table"
+    data-search="true"
+    data-show-multi-sort-button="true"
+    data-multi-sort-strict-sort="true"
+    data-show-columns="true"
+    data-show-multi-sort="true"
+    data-sort-priority='[{"sortName": "office","sortOrder":"desc"},{"sortName":"position","sortOrder":"desc"}]'>
+
+        <thead>
+            <tr>
+                <th data-field="time" data-sortable="true">time</th>
+                <th data-field="pLength" data-sortable="true">pLength</th> 
+                <th data-field="dstIp" data-sortable="true">dstIp</th>
+                <th data-field="srcIP" data-sortable="true">srcIP</th>
+                <th data-field="dstPort" data-sortable="true">dstPort</th>
+                <th data-field="srcPort" data-sortable="true">srcPort</th>
+                <th data-field="protocol" data-sortable="true">protocol</th>
+                <th data-field="severity" data-sortable="true">severity</th>
+                <th data-field="reason" data-sortable="true">reason</th>
+                <th data-field="info" data-sortable="true">info</th>
+                <th data-field="filename" data-sortable="true">filename</th>
+            </tr>
+        </thead>
+        <tbody>
+            {%for alert in alerts %}
+            <tr>
+                <td>{{alert.time}}</td>
+                <td>{{alert.pLength}}</td>
+                <td>{{alert.dstIp}}</td>
+                <td>{{alert.srcIP}}</td>
+                <td>{{alert.dstPort}}</td>
+                <td>{{alert.srcPort}}</td>
+                <td>{{alert.protocol}}</td>
+                <td>{{alert.severity}}</td>
+                <td>{{alert.reason}}</td>
+                <td>{{alert.info}}</td>
+                <td>{{alert.filename}}</td>
+
+            </tr>
+            {% endfor %}
+
+
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>Name</th>
+                <th>Position</th>
+                <th>Office</th>
+                <th>Age</th>
+                <th>Start date</th>
+                <th>Salary</th>
+            </tr>
+        </tfoot>
+    </table>
+
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
+    <script src="https://unpkg.com/bootstrap-table@1.22.1/dist/bootstrap-table.min.js"></script>
+    <script src="https://unpkg.com/bootstrap-table@1.22.1/dist/extensions/multiple-sort/bootstrap-table-multiple-sort.js"></script>
+ 
+    <script>
+        $(function() {
+            
+          $('#table').bootstrapTable()
+        })
+    </script>
+</body>
+
+</html>

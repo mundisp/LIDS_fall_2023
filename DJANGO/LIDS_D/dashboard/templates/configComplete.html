@@ -1,0 +1,62 @@
+{%load static%}
+
+<!DOCTYPE html>
+
+<html>
+<title>Configuration page</title>
+
+<head> 
+    <link rel="stylesheet" href="{% static 'LIDS-D.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+</head>
+
+<body style="background-color: #a86c24;">
+
+    <!--Menu in the right side to jump to other pages in LIDS-D-->
+    <div id="menu">
+
+        <div class="boxes"><a href="NetworkInfo.html" style="color:white;">Network Information </a>
+            <div class="icon1">
+                <i class="bi bi-diagram-3-fill"></i>
+            </div>    
+        </div>
+
+        <div class="boxes"><a href="configServer.html" style="color:white;">Configuration</a>
+        
+            <div class= "icon2">
+                <i class="bi bi-gear"></i>
+            </div>
+    
+        </div>
+
+        <div class="boxes"><a href="viewAlerts" style="color:white;">View Alerts</a>
+            <div class="icon3">
+                <i class="bi bi-exclamation-triangle-fill"></i>
+            </div>
+        </div>
+        
+        <div class="boxes">
+            <div class ="message">
+            Remaining Storage:
+            <br>
+            <br>
+                <!-- Implement your functionality for the storage variable in storage.js-->
+                <script src=" {% static 'storage.js' %}"></script> 
+                GB
+            </div>
+        </div> 
+    
+    </div>
+
+<div id="dashboard">
+
+   <h2 style="margin-left: 33%; margin-top: 25%; color: white;">
+    Configuration uploaded successfully
+    </h2>
+    <a href="viewAlerts"></a>
+    <button style="margin-left: 45%; font-size: 20px;">Start Server</button>
+    </a>
+</div>
+
+</body>
+</html>

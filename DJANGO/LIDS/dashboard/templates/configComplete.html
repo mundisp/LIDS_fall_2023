@@ -1,0 +1,40 @@
+{% extends "welcomePage.html" %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/bootstyle.css' %}">
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
+
+<head>
+    
+</head>
+
+{% block content %}
+
+<body class="container text-center background ">
+
+    <h3 class="container text-center textFormat3 ">Upload Configuration File</h3>
+
+        <!------------------------------------Create Rows in order to have a better looking button---------------------------------------------->
+    <div class="row">
+        <div class="col-xs-6 col-md-4"></div>
+        <div class="col-xs-6 col-md-4 text-center">
+
+            <!-- <input type="file" class="form-control uploadBotton1 " id="customFile" />
+            <a href="Alerts" class="btn btn-secondary bottonText2 ">Upload</a> -->
+            {%csrf_token%}
+            <form method="post" enctype="multipart/form-data" action="Alerts">
+                {%csrf_token%}
+                <a href="Alerts.html">
+                 <button type="submit" class="btn btn-secondary bottonText2">View Alerts</button>
+                </a>
+            </form>
+        </div>
+        <div class="col-xs-6 col-md-4"></div>
+    </div>
+    
+
+   
+</body>
+
+
+{% endblock %}

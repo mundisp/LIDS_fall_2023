@@ -1,0 +1,50 @@
+body {
+    background-color: #a86c24;
+    text-align:center;
+
+    /* Additional styling starts below. */
+    
+    
+}
+h1 {
+    text-align:center;
+    color: black;
+    font-family: "Archivo", "Archivo",  sans-serif;
+    font-size: 80px;
+    font-style: normal;
+    line-height: normal;
+    margin-bottom: 10px;
+}
+h2 {
+    margin-top: 10px;
+    text-align:center;
+    color: black;
+    font-family: "Archivo", "Archivo",  sans-serif;
+    font-size: 100px;
+    font-style: normal;
+    font-weight: 759;
+    line-height: normal;
+}
+h3 {
+    
+    text-align:center;
+    color: black;
+    font-family: "Archivo", "Archivo",  sans-serif;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 759;
+    line-height: normal;
+}
+h4 {
+    
+    text-align:center;
+    color: black;
+    font-family: "Archivo", "Archivo",  sans-serif;
+    font-size: 18px;
+    margin-top: 10px;
+    font-style: normal;
+    font-weight: 759;
+    line-height: normal;
+}
+
+

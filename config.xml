@@ -1,0 +1,67 @@
+<?xmI version="1.0"?>
+
+<server>
+<ip>192.168.1.37</ip>
+<mac>09:25:20:07:01:15</mac>
+<port>8085</port>
+</server>
+
+<network>
+
+<system> 
+<name>Sebastian</name> 
+<ip>10.0.0.1</ip>
+<mac>09-25-20-07-01-17</mac> 
+<ports>22,80,4444</ports> 
+<whitelist>10.0.0.2,10.0.0.3,10.0.0.4</whitelist>
+</system>
+
+<system>
+<name>Diana</name> 
+<ip>10.0.0.2</ip> 
+<mac>09-22-20-11-00-00</mac>
+ <ports>22</ports> 
+ <whitelist>10.0.0.1,10.0.0.3,10.0.0.5</whitelist>
+</system>
+
+<system>
+<name>Aldo</name> 
+<ip>172.16.172.128</ip> 
+<mac>09-22-20-11-00-00</mac>
+ <ports>22</ports> 
+ <whitelist>10.0.0.1,10.0.0.3</whitelist>
+</system>
+
+<system>
+<name>Edgar</name> 
+<ip>10.0.2.15</ip> 
+<mac>09-22-20-11-00-00</mac>
+ <ports>22</ports> 
+ <whitelist>10.0.0.1,10.0.0.3</whitelist>
+</system>
+
+<system>
+<name>Kali</name> 
+<ip>192.168.1.230</ip> 
+<mac>09-22-20-11-00-00</mac>
+ <ports>22</ports> 
+ <whitelist>10.0.0.1,10.0.0.3</whitelist>
+</system>
+
+<system>
+<name>Ericka</name> 
+<ip>10.0.0.3</ip> 
+<mac>09-26-20-17-00-00</mac> 
+<ports>22</ports> 
+<whitelist>10.0.0.1,10.0.0.2,10.0.0.245</whitelist> 
+</system> 
+
+<system>
+<name>Cris</name> 
+<ip>172.20.52.32</ip> 
+<mac>09-22-20-11-00-00</mac>
+ <ports>22</ports> 
+ <whitelist>10.0.0.1,10.0.0.3</whitelist>
+</system>
+
+</network>

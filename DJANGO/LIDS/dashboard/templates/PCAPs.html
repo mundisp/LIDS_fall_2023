@@ -1,0 +1,69 @@
+{% extends "TableBase.html" %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+<title>{% block title %}PCAPs{% endblock %}</title>
+
+{% block content %}
+    <h3>PCAPs</h3>
+  
+    <!-- Add your table rows here --> 
+    <body>
+        <div class="button">
+            <a href="{% url 'Alerts' %}" role="button" style="margin-right: 1260px; "class="btn btn-outline-secondary">Alerts</a>
+        </div>
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="margin-left: 580px ;">
+              Sort By
+            </button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Time</a></li>
+              <li><a class="dropdown-item" href="#">Source</a></li>
+              <li><a class="dropdown-item" href="#">Destination</a></li>
+              <li><a class="dropdown-item" href="#">Protocol</a></li>
+            </ul>
+        </div>
+
+        <table class="custom-table" >
+            <thead>
+                <tr>
+                    <th>Time</th>
+                    <th>Source</th>
+                    <th>Destination</th>
+                    <th>Protocol</th>
+                    <th>Length</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="table-ok">
+                    <td >5.025</td>
+                    <td >192.168.0.8</td>
+                    <td>192.168.0.7</td>
+                    <td>TCP</td>
+                    <td>66</td>
+                    <td>49875 -> 80 [SYN] Seq=0 Win=..</td>
+                </tr>
+                <tr class="table-ok">
+                    <td >7.655</td>
+                    <td >192.168.0.8</td>
+                    <td>192.168.0.7</td>
+                    <td>HTTP</td>
+                    <td>478</td>
+                    <td>POST/ action_page.php HTTP/1.1..</td>
+                </tr>
+                <tr class="table-ok">
+                    <td >11.686</td>
+                    <td >192.168.0.8</td>
+                    <td>192.168.0.7</td>
+                    <td>TCP</td>
+                    <td>54</td>
+                    <td>49789 -> 80 [ACK] Seq = 425 Ack..</td>
+                </tr>
+
+            </tbody>
+        </table>  
+
+    </body>  
+      
+{% endblock %}
+ 

@@ -1,0 +1,133 @@
+
+body{
+
+    font-family: Arial;
+
+}
+
+#menu{
+    border: none;
+    width: 200px;
+    height: 525px;
+    margin-left: 85%;
+    margin-top: 5%;
+    text-align: center;
+    
+}
+
+.boxes{
+    
+    background-color:  #3f3f3f;
+    border-width: 1px;
+    border: solid;
+    height: 100px;
+    width: 200px;
+}
+
+#dashboard{
+    position: absolute;
+    top:0;
+    background-color: #3f3f3f;
+    border: solid;
+    border-width: 2px;
+    width: 80%;
+    height: 100%;
+
+}
+
+#devices{
+    
+    border: none;
+    background-color: #3f3f3f;
+
+}
+
+
+th{
+    font-size: 15px;
+    padding-left: 22px;
+    padding-right: 22px;
+}
+
+#description{
+
+    width: 311px;
+}
+
+.icon1{
+
+
+    color: white;
+    font-size: 35px;
+    margin-top: 8%;
+}
+.icon2{
+
+
+    color: white;
+    font-size: 35px;
+    margin-top: 8%;
+}
+.icon3{
+
+
+    color: white;
+    font-size: 35px;
+    margin-top: 8%;
+}
+.message{
+
+
+    color:white;
+
+
+}
+
+#nodeContainer{
+
+    border: none; /* Only used when working with the container*/
+
+}
+
+.nodeCSS{
+    color: #318CE7;
+    font-size: 35px;
+    margin-left: 25px;
+    margin-top: 20px;
+    border: solid;
+    width: 145px;
+    /*margin-right: 88%; */
+    border-color: white;
+    text-align: center;
+    border-width: 1px;
+    padding-top: 10px;
+    display: inline-block;
+    box-shadow: none;
+    transition: box-shadow 0.3s, transform 0.3s;
+    transform: translateY(0);
+
+}
+.nodeCSS:hover{
+
+    box-shadow: 8px 8px 8px rgba(5, 5, 5, 5);
+    transform: translateY(-5px);
+
+}
+
+#exports{
+    display: flex;
+    flex-direction: column;
+    border: 2px solid red;
+    width: 300px;
+    height: 300px;
+}
+
+form{
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+    width: 300px;
+    height: 100px;
+    /* flex-direction: column;   */
+
+}
