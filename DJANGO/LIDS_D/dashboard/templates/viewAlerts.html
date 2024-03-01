@@ -107,9 +107,10 @@
                     <td>{{alert.alert_id}}</td>
                     
                     <!--Changing colors based on severity level-->
-                    <td {% if alert.severity_level == "3"%} style="background-color: #CC0000"
-                    {%elif alert.severity_level == '2'%} style="background-color: #FFD700"
-                    {%elif alert.severity_level == "1"%} style="background-color: green;"
+                    <td {% if alert.severity_level == "3"%} style="background-color: #F28C28"
+                    {%elif alert.severity_level == '2'%} style="background-color: #FFC000"
+                    {%elif alert.severity_level == "1"%} 
+                    {%elif alert.severity_level == "4"%} style="background-color: #CC0000"
                     {% endif%}>{{alert.severity_level}}</td>
                     
                     <td>{{alert.time}}</td>

@@ -66,17 +66,18 @@
                 <!--
                 <th>ID</th>
                 -->
-                <th style="width: 20%">Name</th>
+                
+                <th style="width: 10%">Name</th>
 
                 
-                <th style="width: 20%">IP</th>
+                <th style="width: 10%">IP</th>
                 <!--
                 <th >MAC address</th>
                 <th style="width: 5%">Port</th>
                 -->
-                <th style="width: 20%">Alerts</th>
+                <th style="width: 10%">Alerts</th>
                 
-                <th style="width: 20%">Connection Status</th>
+                <th style="width: 10%">Connection Status</th>
             </tr>
 
             
@@ -245,7 +246,8 @@
                             currentNode.ip = lines[0];
                             currentNode.host = lines[1];
                             currentNode.status = lines[2] + " " + lines [3];
-                            currentNode.numAlerts = 0;
+                            let x = Math.ceil(Math.random() * 100);
+                            currentNode.numAlerts = x;
                             
                             nodeList.push(currentNode)
                         }
